@@ -161,4 +161,4 @@ global:
   ## Override the release name
   nameOverride: demo
   serviceName: backend
-  runTime: nodejs
+  runTime: dotnet

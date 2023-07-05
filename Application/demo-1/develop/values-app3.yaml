@@ -161,4 +161,4 @@ global:
   ## Override the release name
   nameOverride: demo
   serviceName: webapp
-  runTime: nodejs
+  runTime: ngnix
