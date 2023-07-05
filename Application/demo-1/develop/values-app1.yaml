@@ -159,4 +159,4 @@ deploy:
 
 global:
   ## Override the release name
-  nameOverride:
+  nameOverride: app1
