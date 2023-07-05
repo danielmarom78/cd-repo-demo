@@ -159,6 +159,6 @@ deploy:
 
 global:
   ## Override the release name
-  nameOverride: app3
+  nameOverride: demo
   serviceName: webapp
   runTime: nodejs
