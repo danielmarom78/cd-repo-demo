@@ -6,6 +6,6 @@ metadata:
   labels:
     {{- include "app.labels" . | nindent 4 }}
 data:
-  application.properties: |-
+  '{{ .Values.deploy.applicationProperties.fileName }}': |-
     {{- tpl .Values.deploy.applicationProperties.properties . | nindent 4 }}
 {{- end }}
