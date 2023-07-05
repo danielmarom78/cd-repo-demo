@@ -99,7 +99,8 @@ deploy:
 
   ## Freeform Liveness Probe. More information: https://docs.openshift.com/container-platform/4.6/applications/application-health.html#application-health-about_application-health
   livenessProbe:
-    tcpSocket:
+    httpGet:
+      path: /health/liveliness
       port: http
   ## If you don't want a livenessProbe, override like this in your values file
   # livenessProbe: ''
@@ -107,7 +108,7 @@ deploy:
   ## Freeform Readiness Probe. More information: https://docs.openshift.com/container-platform/4.6/applications/application-health.html#application-health-about_application-health
   readinessProbe:
     httpGet:
-      path: /
+      path: /health/readiness
       port: http
   ## If you don't want a readinessProbe, override like this in your values file
   # readinessProve: ''
