@@ -2,14 +2,14 @@
 apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
-  name: {{ include "dotnet.name" . }}
+  name: {{ include "app.name" . }}
   labels:
-    {{- include "dotnet.labels" . | nindent 4 }}
+    {{- include "app.labels" . | nindent 4 }}
 spec:
   output:
     to:
       kind: {{ .Values.build.output.kind }}
-      name: {{ include "dotnet.imageName" . }}
+      name: {{ include "app.imageName" . }}
 {{- if and (eq .Values.build.output.kind "DockerImage") .Values.build.output.pushSecret }}
     pushSecret:
       name: {{ .Values.build.output.pushSecret }}
@@ -41,7 +41,7 @@ spec:
   {{- if .Values.build.env }}
         {{- tpl (toYaml .Values.build.env) . | nindent 8 }}
   {{- end }}
-        - name: "DOTNET_STARTUP_PROJECT"
+        - name: "APP_STARTUP_PROJECT"
           value: {{ .Values.build.startupProject | quote }}
 {{- if .Values.build.resources }}
   resources:

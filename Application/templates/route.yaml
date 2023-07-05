@@ -2,13 +2,13 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: {{ include "dotnet.name" . }}
+  name: {{ include "app.name" . }}
   labels:
-    {{- include "dotnet.labels" . | nindent 4 }}
+    {{- include "app.labels" . | nindent 4 }}
 spec:
   to:
     kind: Service
-    name: {{ include "dotnet.name" . }}
+    name: {{ include "app.name" . }}
   port:
     targetPort: {{ tpl .Values.deploy.route.targetPort . }}
 {{- if .Values.deploy.route.tls.enabled }}

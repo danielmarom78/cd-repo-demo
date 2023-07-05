@@ -1,22 +1,22 @@
-{{- define "dotnet.name" -}}
+{{- define "app.name" -}}
 {{ default .Release.Name .Values.global.nameOverride }}
 {{- end -}}
 
-{{- define "dotnet.labels" -}}
+{{- define "app.labels" -}}
 helm.sh/chart: {{ .Chart.Name }}
-{{ include "dotnet.selectorLabels" . }}
+{{ include "app.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
-app.openshift.io/runtime: dotnet
+app.openshift.io/runtime: app
 {{- end }}
 
-{{- define "dotnet.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "dotnet.name" . }}
+{{- define "app.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "app.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
-{{- define "dotnet.imageName" -}}
-{{ default (include "dotnet.name" .) .Values.image.name }}:{{ .Values.image.tag }}
+{{- define "app.imageName" -}}
+{{ default (include "app.name" .) .Values.image.name }}:{{ .Values.image.tag }}
 {{- end -}}

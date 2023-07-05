@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "dotnet.name" . }}
+  name: {{ include "app.name" . }}
   labels:
-    {{- include "dotnet.labels" . | nindent 4 }}
+    {{- include "app.labels" . | nindent 4 }}
 {{- if and .Values.build.enabled (eq .Values.build.output.kind "ImageStreamTag") }}
   annotations:
     image.openshift.io/triggers: |-
@@ -11,7 +11,7 @@ metadata:
         {
           "from":{
             "kind":"ImageStreamTag",
-            "name":"{{ include "dotnet.imageName" . }}"
+            "name":"{{ include "app.imageName" . }}"
           },
           "fieldPath":"spec.template.spec.containers[0].image"
         }
@@ -21,11 +21,11 @@ spec:
   replicas: {{ .Values.deploy.replicas }}
   selector:
     matchLabels:
-      {{- include "dotnet.selectorLabels" . | nindent 6 }}
+      {{- include "app.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "dotnet.labels" . | nindent 8 }}
+        {{- include "app.labels" . | nindent 8 }}
     spec:
 {{- if .Values.deploy.initContainers }}
       initContainers:
@@ -33,7 +33,7 @@ spec:
 {{- end }}
       containers:
         - name: web
-          image: {{ include "dotnet.imageName" . }}
+          image: {{ include "app.imageName" . }}
           ports:
 {{- range .Values.deploy.ports }}
             - name: {{ .name }}
@@ -75,7 +75,7 @@ spec:
 {{- if .Values.deploy.applicationProperties.enabled }}
         - name: application-properties
           configMap:
-            name: {{ include "dotnet.name" . }}
+            name: {{ include "app.name" . }}
 {{- end }}
 {{- if .Values.deploy.volumes }}
         {{- tpl (toYaml .Values.deploy.volumes) . | nindent 8 }}
