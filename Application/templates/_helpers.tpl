@@ -3,13 +3,13 @@
 {{- end -}}
 
 {{- define "app.labels" -}}
-helm.sh/chart: {{ .Chart.Name }}
 {{ include "app.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
-app.kubernetes.io/managed-by: {{ .Release.Service }}
-app.openshift.io/runtime: app
+app.kubernetes.io/part-of: {{ include "app.name" . }}
+app.kubernetes.io/managed-by: argocd
+app.openshift.io/runtime: {{ .Values.global.runTime }}
 {{- end }}
 
 {{- define "app.selectorLabels" -}}
