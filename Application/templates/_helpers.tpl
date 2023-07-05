@@ -1,5 +1,5 @@
 {{- define "app.name" -}}
-{{ default .Release.Name .Values.global.nameOverride }}
+'{{ default .Release.Name .Values.global.nameOverride }}-{{ .Values.global.service }}'
 {{- end -}}
 
 {{- define "app.labels" -}}
