@@ -160,3 +160,4 @@ deploy:
 global:
   ## Override the release name
   nameOverride: app2
+  runTime: nodejs
