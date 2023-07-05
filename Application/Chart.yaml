@@ -1,0 +1,7 @@
+apiVersion: v2
+description: A Helm chart to build and deploy .NET applications
+keywords:
+- runtimes
+- dotnet
+name: dotnet
+version: 0.0.1
