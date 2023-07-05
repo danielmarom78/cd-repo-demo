@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "app.name" . }}
+  name: '{{ include "app.name" . }}-{{ .Values.global.serviceName }}'
   labels:
     {{- include "app.labels" . | nindent 4 }}
 {{- if and .Values.build.enabled (eq .Values.build.output.kind "ImageStreamTag") }}
@@ -32,7 +32,7 @@ spec:
         {{- tpl (toYaml .Values.deploy.initContainers) . | nindent 8 }}
 {{- end }}
       containers:
-        - name: web
+        - name: {{ .Values.global.serviceName }}
           image: {{ include "app.imageName" . }}
           ports:
 {{- range .Values.deploy.ports }}
