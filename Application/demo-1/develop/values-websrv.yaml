@@ -110,5 +110,5 @@ deploy:
 global:
   ## Override the release name
   nameOverride: demo
-  serviceName: webapp
+  serviceName: websrv
   runTime: nginx
