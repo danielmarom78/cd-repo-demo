@@ -65,7 +65,7 @@ deploy:
     - name: IMAGE
       value: quay.io/argocicd/hello-world
     - name: TAG
-      value: ver_a5e2f0
+      value: '1234'
 
   ## Freeform envFrom. More information: https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#configure-all-key-value-pairs-in-a-configmap-as-container-environment-variables
   envFrom:
