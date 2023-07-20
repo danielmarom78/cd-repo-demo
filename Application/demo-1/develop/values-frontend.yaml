@@ -3,7 +3,7 @@ image:
   ## Defaults to the release name
   name: quay.io/argocicd/hello-world
   ## Tag that you want to build/deploy
-  tag: ver_a5e2f0
+  tag: ver_b2afcf
 
 ## Application/Deployment-specific values (For configuring Deployment, Service, Route, ConfigMap, etc)
 deploy:
@@ -65,7 +65,7 @@ deploy:
     - name: IMAGE
       value: quay.io/argocicd/hello-world
     - name: TAG
-      value: ver_a5e2f0
+      value: ver_b2afcf
 
   ## Freeform envFrom. More information: https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#configure-all-key-value-pairs-in-a-configmap-as-container-environment-variables
   envFrom:
