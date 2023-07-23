@@ -1,0 +1,30 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: ngnix-api-gateway-workshop-git-
+spec:
+  params:
+    - name: APP_NAME
+      value: ngnix-api-gateway-workshop-git
+    - name: GIT_REPO
+      value: 'https://github.com/tal-hason/nodejs-demo-app.git'
+    - name: GIT_REVISION
+      value: main
+    - name: IMAGE_NAME
+      value: quay.io/thason/gitops-demo
+    - name: PATH_CONTEXT
+      value: .
+    - name: IMAGE_TAG
+      value: node
+    - name: GIT_CD_REPO
+      value: 'https://github.com/tal-hason/cd-repo-demo.git'
+    - name: BUILD
+      value: 'false'
+  pipelineRef:
+    name: ngnix-api-gateway-workshop-git
+  serviceAccountName: pipeline
+  timeout: 1h0m0s
+  workspaces:
+    - name: workspace
+      persistentVolumeClaim:
+        claimName: pipeline
