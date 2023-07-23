@@ -24,7 +24,7 @@ deploy:
 
   ## Freeform service ports. More information: https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service
   ports:
-    - name: quay.io/thason/gitops-demo
+    - name: http
       port: 8080
       targetPort: 8080
       protocol: TCP
@@ -70,7 +70,7 @@ deploy:
   ## Freeform envFrom. More information: https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#configure-all-key-value-pairs-in-a-configmap-as-container-environment-variables
   envFrom:
   #  - configMapRef:
-  #      name: quay.io/thason/gitops-demo
+  #      name: special-config
 
   ## Application properties file for configuring the app
   applicationProperties:
@@ -85,26 +85,26 @@ deploy:
 
   ## Freeform volume mounts. More information: https://kubernetes.io/docs/concepts/storage/volumes/
   volumeMounts:
-  #  - name: quay.io/thason/gitops-demo
+  #  - name: my-config
   #    mountPath: /etc/config
 
   ## Freeform volumes. More information: https://kubernetes.io/docs/concepts/storage/volumes/
   volumes:
-  #  - name: quay.io/thason/gitops-demo
+  #  - name: my-config
   #    configMap:
-  #      name: quay.io/thason/gitops-demo
+  #      name: my-configmap
 
   ## Freeform init containers: More information: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/
   initContainers:
-  #  - name: quay.io/thason/gitops-demo
+  #  - name: my-init-container
   #    command: ["echo", "hello"]
-  #    image: quay.io/thason/gitops-demo
+  #    image: registry.redhat.io/ubi8/ubi-minimal
 
   ## Freeform containers: More information: https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates
   extraContainers:
-  #  - name: quay.io/thason/gitops-demo
+  #  - name: my-extra-container
   #    command: ["sleep", "infinity"]
-  #    image: quay.io/thason/gitops-demo
+  #    image: registry.redhat.io/ubi8/ubi-minimal
 
 global:
   ## Override the release name
