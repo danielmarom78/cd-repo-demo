@@ -1,0 +1,56 @@
+---
+apiVersion: triggers.tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: bitbucket-server-listener
+spec:
+  serviceAccountName: tekton-triggers-example-sa
+  triggers:
+    - name: bitbucket-server-triggers
+      interceptors:
+        - ref:
+            name: "bitbucket"
+          params:
+            - name: secretRef
+              value:
+                secretName: bitbucket-server-secret
+                secretKey: secretToken
+            - name: eventTypes
+              value:
+                - repo:refs_changed
+      bindings:
+        - ref: bitbucket-server-binding
+      template:
+        ref: bitbucket-server-template
+---
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerBinding
+metadata:
+  name: bitbucket-server-binding
+spec:
+  params:
+    - name: gitrevision
+      value: $(body.changes[0].ref.displayId)
+    - name: gitrepositoryurl
+      value: $(body.repository.links.clone[0].href)
+---
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  name: bitbucket-server-template
+spec:
+  params:
+    - name: gitrevision
+    - name: gitrepositoryurl
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: TaskRun
+      metadata:
+        generateName: bitbucket-run-
+      spec:
+        taskSpec:
+          steps:
+            - image: ubuntu
+              script: |
+                #! /bin/bash
+                echo "Revision is : $(tt.params.gitrevision). RepoURL is $(tt.params.gitrepositoryurl)"
