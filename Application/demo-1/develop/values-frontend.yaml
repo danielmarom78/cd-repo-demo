@@ -3,7 +3,7 @@ image:
   ## Defaults to the release name
   name: quay.io/argocicd/hello-world
   ## Tag that you want to build/deploy
-  tag: ver_a5e2f0
+  tag: node
 
 ## Application/Deployment-specific values (For configuring Deployment, Service, Route, ConfigMap, etc)
 deploy:
