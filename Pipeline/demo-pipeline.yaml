@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: ngnix-api-gateway-workshop-git
+  name: demo-pipeline
 spec:
   params:
     - default: demo
