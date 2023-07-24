@@ -5,4 +5,4 @@ namespace: gitea-operator
 
 resources:
   - catalog.yaml
-  - namespace.yaml
+
