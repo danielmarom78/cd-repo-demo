@@ -9,11 +9,4 @@ spec:
   name: gitea-operator
   source: redhat-rhpds-gitea
   sourceNamespace: openshift-marketplace
----
-apiVersion: operators.coreos.com/v1
-kind: OperatorGroup
-metadata:
-  name: gitea-operator
-  namespace: openshift-operators
-spec:
-  targetNamespaces: []
+
