@@ -5,7 +5,7 @@ metadata:
 spec:
   params:
     - name: APP_NAME
-      value: ngnix-api-gateway-workshop-git
+      value: demo
     - name: GIT_REPO
       value: 'https://github.com/tal-hason/nodejs-demo-app.git'
     - name: GIT_REVISION
@@ -15,11 +15,15 @@ spec:
     - name: PATH_CONTEXT
       value: .
     - name: IMAGE_TAG
-      value: node
+      value: node_v2
     - name: GIT_CD_REPO
       value: 'https://github.com/tal-hason/cd-repo-demo.git'
     - name: BUILD
-      value: 'false'
+      value: 'True'
+    - name: DEPLOY_ENV
+      value: develop
+    - name: SERVICE_NAME
+      value: frontend
   pipelineRef:
     name: ngnix-api-gateway-workshop-git
   serviceAccountName: pipeline

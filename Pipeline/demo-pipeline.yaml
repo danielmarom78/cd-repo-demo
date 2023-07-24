@@ -1,11 +1,10 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: demo-pipeline
-  namespace: demo-develop
+  name: ngnix-api-gateway-workshop-git
 spec:
   params:
-    - default: demo-app
+    - default: demo
       name: APP_NAME
       type: string
     - default: 'https://github.com/tal-hason/nodejs-demo-app.git'
@@ -14,12 +13,26 @@ spec:
     - default: main
       name: GIT_REVISION
       type: string
-    - default: >-
-        image-registry.openshift-image-registry.svc:5000/demo-develop/nodejs-demo-app
+    - default: quay.io/thason/gitops-demo
       name: IMAGE_NAME
       type: string
     - default: .
       name: PATH_CONTEXT
+      type: string
+    - default: node
+      name: IMAGE_TAG
+      type: string
+    - default: 'https://github.com/tal-hason/cd-repo-demo.git'
+      name: GIT_CD_REPO
+      type: string
+    - default: 'True'
+      name: BUILD
+      type: string
+    - default: develop
+      name: DEPLOY_ENV
+      type: string
+    - default: frontend
+      name: SERVICE_NAME
       type: string
   tasks:
     - name: fetch-repository
@@ -41,7 +54,7 @@ spec:
     - name: build
       params:
         - name: IMAGE
-          value: $(params.IMAGE_NAME)
+          value: '$(params.IMAGE_NAME):$(params.IMAGE_TAG)'
         - name: TLSVERIFY
           value: 'false'
         - name: CONTEXT
@@ -51,17 +64,56 @@ spec:
       taskRef:
         kind: ClusterTask
         name: buildah
+      when:
+        - input: $(params.BUILD)
+          operator: in
+          values:
+            - 'True'
       workspaces:
         - name: source
           workspace: workspace
     - name: deploy
       params:
         - name: SCRIPT
-          value: oc rollout status deploy/$(params.APP_NAME)
+          value: >-
+            oc patch deployment $(params.APP_NAME) -p
+            '{"spec":{"template":{"spec":{"containers":[{"name":"$(params.APP_NAME)","image":"$(params.IMAGE_NAME):$(params.IMAGE_TAG)"}]}}}}'
       runAfter:
         - build
       taskRef:
         kind: ClusterTask
         name: openshift-client
+      when:
+        - input: $(params.BUILD)
+          operator: notin
+          values:
+            - 'True'
+    - name: update-chart
+      params:
+        - name: git-url-source
+          value: github.com
+        - name: git-user
+          value: tal-hason
+        - name: git-repo-name
+          value: cd-repo-demo
+        - name: tag
+          value: $(params.IMAGE_TAG)
+        - name: branch
+          value: $(params.GIT_REVISION)
+        - name: git-secret-name
+          value: gh-token
+        - name: application-name
+          value: $(params.APP_NAME)
+        - name: deploy-env
+          value: $(params.DEPLOY_ENV)
+        - name: service-name
+          value: $(params.SERVICE_NAME)
+        - name: image
+          value: $(params.IMAGE_NAME)
+      runAfter:
+        - build
+      taskRef:
+        kind: ClusterTask
+        name: update-chart
   workspaces:
     - name: workspace
