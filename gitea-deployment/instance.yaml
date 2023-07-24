@@ -1,0 +1,30 @@
+apiVersion: gpte.opentlc.com/v1
+kind: Gitea
+metadata:
+  name: gitea-demo
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+spec:
+  giteaSsl: true
+  giteaAdminUser: opentlc-mgr
+  giteaAdminPassword: ""
+  giteaAdminPasswordLength: 32
+  giteaAdminEmail: opentlc-mgr@redhat.com
+  giteaCreateUsers: true
+  giteaGenerateUserFormat: "user%d"
+  giteaUserNumber: 1
+  giteaUserPassword: openshift
+  giteaMigrateRepositories: true
+  giteaRepositoriesList:
+  - repo: https://github.com/tal-hason/cd-repo-demo.git
+    name: cd-repo-demo
+    private: false
+  - repo: https://github.com/tal-hason/nodejs-demo-app.git
+    name: nodejs-demo-app
+    private: false
+  - repo: https://github.com/tal-hason/angular-demo-app.git
+    name: angular-demo-app
+    private: false
+  - repo: https://github.com/tal-hason/dotnet-demo-app.git
+    name: dotnet-demo-app
+    private: false

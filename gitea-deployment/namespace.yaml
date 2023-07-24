@@ -1,0 +1,13 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: gitea
+  labels:
+    argocd.argoproj.io/managed-by: openshift-gitops
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+spec:
+  finalizers:
+    - kubernetes
+status:
+  phase: Active
