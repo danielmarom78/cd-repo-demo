@@ -37,6 +37,9 @@ spec:
     - default: ''
       name: service-name
       type: string
+    - default: ''
+      name: http
+      type: string
   steps:
     - args:
         - '-c'
@@ -56,7 +59,7 @@ spec:
           git config --global user.name "$(params.git-user)"
 
           git clone
-          https://$(params.git-url-source)/$(params.git-user)/$(params.git-repo-name).git
+          $(params.http)://$(params.git-url-source)/$(params.git-user)/$(params.git-repo-name).git
 
           cd
           $(params.git-repo-name)/Application/$(params.application-name)/$(params.deploy-env)
@@ -65,16 +68,15 @@ spec:
 
           echo "Update image name"
 
-          yq -i '.image.name = "$(params.image)"'
+          yq -i '.image.name = "$(params.image)" | .image.tag = "$(params.tag)"'
           values-$(params.service-name).yaml
 
-          echo "Update image tag"
+          yq -i '.deploy.env[0].value = "$(params.image)" | .deploy.env[1].value
+          = "$(params.tag)"' values-$(params.service-name).yaml
 
-          yq -i '.image.tag = "$(params.tag)"'
-          values-$(params.service-name).yaml
 
           git remote set-url origin
-          https://$GIT_TOKEN:x-oauth-basic@$(params.git-url-source)/$(params.git-user)/$(params.git-repo-name).git
+          $(params.http)://$GIT_TOKEN:x-oauth-basic@$(params.git-url-source)/$(params.git-user)/$(params.git-repo-name).git
 
           git add .
 

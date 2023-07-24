@@ -7,7 +7,7 @@ spec:
     - default: demo
       name: APP_NAME
       type: string
-    - default: 'https://github.com/tal-hason/nodejs-demo-app.git'
+    - default: 'http://gitea-demo.gitea.svc:3000/user1/nodejs-demo-app.git'
       name: GIT_REPO
       type: string
     - default: main
@@ -22,7 +22,7 @@ spec:
     - default: node
       name: IMAGE_TAG
       type: string
-    - default: 'https://github.com/tal-hason/cd-repo-demo.git'
+    - default: 'http://gitea-demo.gitea.svc:3000/user1/cd-repo-demo.git'
       name: GIT_CD_REPO
       type: string
     - default: 'True'
@@ -33,6 +33,21 @@ spec:
       type: string
     - default: frontend
       name: SERVICE_NAME
+      type: string
+    - default: 'gitea-demo.gitea.svc:3000'
+      name: GIT_URL
+      type: string
+    - default: user1
+      name: GIT_USER
+      type: string
+    - default: gitea-token
+      name: GIT_TOKEN
+      type: string
+    - default: http
+      name: CONN
+      type: string
+    - default: cd-repo-demo
+      name: REPO_NAME
       type: string
   tasks:
     - name: fetch-repository
@@ -54,7 +69,7 @@ spec:
     - name: build
       params:
         - name: IMAGE
-          value: '$(params.IMAGE_NAME):$(params.IMAGE_TAG)'
+          value: '$(params.IMAGE_NAME):$(tasks.fetch-repository.results.commit)'
         - name: TLSVERIFY
           value: 'false'
         - name: CONTEXT
@@ -91,17 +106,17 @@ spec:
     - name: update-chart
       params:
         - name: git-url-source
-          value: github.com
+          value: $(params.GIT_URL)
         - name: git-user
-          value: tal-hason
+          value: $(params.GIT_USER)
         - name: git-repo-name
-          value: cd-repo-demo
+          value: $(params.REPO_NAME)
         - name: tag
-          value: $(params.IMAGE_TAG)
+          value: $(tasks.fetch-repository.results.commit)
         - name: branch
           value: $(params.GIT_REVISION)
         - name: git-secret-name
-          value: gh-token
+          value: $(params.GIT_TOKEN)
         - name: application-name
           value: $(params.APP_NAME)
         - name: deploy-env
@@ -110,6 +125,8 @@ spec:
           value: $(params.SERVICE_NAME)
         - name: image
           value: $(params.IMAGE_NAME)
+        - name: http
+          value: $(params.CONN)
       runAfter:
         - build
       taskRef:
