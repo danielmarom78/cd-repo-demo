@@ -3,6 +3,4 @@ kind: Kustomization
 
 resources:
   - instance.yaml
-  - catalog.yaml
   - namespace.yaml
-  - sub.yaml
