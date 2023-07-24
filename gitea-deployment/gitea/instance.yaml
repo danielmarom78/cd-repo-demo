@@ -1,5 +1,5 @@
-apiVersion: gpte.opentlc.com/v1
 kind: Gitea
+apiVersion: pfe.rhpds.com/v1
 metadata:
   name: gitea-demo
   annotations:
