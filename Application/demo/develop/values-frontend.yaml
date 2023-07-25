@@ -3,7 +3,7 @@ image:
   ## Defaults to the release name
   name: quay.io/thason/gitops-demo
   ## Tag that you want to build/deploy
-  tag: abe63a26545b67cd07dca1b7a5a13980654ec678
+  tag: e28dc8ebfb4934cf1362f87285ebb7c2f1faf4cf
 ## Application/Deployment-specific values (For configuring Deployment, Service, Route, ConfigMap, etc)
 deploy:
   ## Number of pod replicas to deploy
@@ -60,7 +60,7 @@ deploy:
     - name: IMAGE
       value: quay.io/thason/gitops-demo
     - name: TAG
-      value: abe63a26545b67cd07dca1b7a5a13980654ec678
+      value: e28dc8ebfb4934cf1362f87285ebb7c2f1faf4cf
   ## Freeform envFrom. More information: https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#configure-all-key-value-pairs-in-a-configmap-as-container-environment-variables
   envFrom:
   #  - configMapRef:
