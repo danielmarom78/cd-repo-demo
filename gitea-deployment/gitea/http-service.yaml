@@ -1,0 +1,21 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: gitea-http
+spec:
+  ipFamilies:
+    - IPv4
+  ports:
+    - name: gitea
+      protocol: TCP
+      port: 80
+      targetPort: 3000
+    - name: gitea-ssh
+      protocol: TCP
+      port: 22
+      targetPort: 2022
+  internalTrafficPolicy: Cluster
+  type: ClusterIP
+  selector:
+    app: gitea-demo
+
