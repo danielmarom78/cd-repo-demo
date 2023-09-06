@@ -16,6 +16,7 @@ spec:
   giteaUserPassword: openshift
   giteaMigrateRepositories: true
   giteaWebhookAllowedHostList: '*'
+  giteaWebhookSkipTlsVerify: true
   giteaRepositoriesList:
   - repo: https://github.com/tal-hason/cd-repo-demo.git
     name: cd-repo-demo
