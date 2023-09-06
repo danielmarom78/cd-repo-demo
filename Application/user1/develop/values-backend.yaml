@@ -1,15 +1,13 @@
 image:
   ## Name of the image you want to build/deploy
   ## Defaults to the release name
-  name: quay.io/argocicd/hello-world
+  name: quay.io/thason/gitops-demo
   ## Tag that you want to build/deploy
-  tag: ver_a5e2f0
-
+  tag: e28dc8ebfb4934cf1362f87285ebb7c2f1faf4cf
 ## Application/Deployment-specific values (For configuring Deployment, Service, Route, ConfigMap, etc)
 deploy:
   ## Number of pod replicas to deploy
   replicas: 1
-
   ## Freeform resources. More information: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
   resources:
   #  limits:
@@ -21,14 +19,12 @@ deploy:
 
   ## Type of service to create. More information: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
   serviceType: ClusterIP
-
   ## Freeform service ports. More information: https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service
   ports:
     - name: http
       port: 8080
       targetPort: 8080
       protocol: TCP
-
   ## For creating a Route, allowing your application to be accessed from outside the OCP cluster
   route:
     enabled: true
@@ -43,7 +39,6 @@ deploy:
       caCertificate:
       certificate:
       destinationCACertificate:
-
   ## Freeform Liveness Probe. More information: https://docs.openshift.com/container-platform/4.6/applications/application-health.html#application-health-about_application-health
   livenessProbe:
     httpGet:
@@ -63,10 +58,9 @@ deploy:
   ## Freeform env. More information: https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/
   env:
     - name: IMAGE
-      value: quay.io/argocicd/hello-world
+      value: quay.io/thason/gitops-demo
     - name: TAG
-      value: '1234'
-
+      value: 'e28dc8ebfb4934cf1362f87285ebb7c2f1faf4cf'
   ## Freeform envFrom. More information: https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#configure-all-key-value-pairs-in-a-configmap-as-container-environment-variables
   envFrom:
   #  - configMapRef:
@@ -82,7 +76,6 @@ deploy:
     fileName: application.properties
     properties: |-
       ## Properties go here
-
   ## Freeform volume mounts. More information: https://kubernetes.io/docs/concepts/storage/volumes/
   volumeMounts:
   #  - name: my-config
@@ -105,7 +98,6 @@ deploy:
   #  - name: my-extra-container
   #    command: ["sleep", "infinity"]
   #    image: registry.redhat.io/ubi8/ubi-minimal
-
 global:
   ## Override the release name
   nameOverride: demo
