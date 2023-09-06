@@ -114,3 +114,4 @@ global:
   nameOverride: demo
   serviceName: frontend
   runTime: nodejs
+  namespace: demo-develop 
