@@ -20,3 +20,11 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- define "app.imageName" -}}
 {{ default (include "app.name" .) .Values.image.name }}:{{ .Values.image.tag }}
 {{- end -}}
+
+{{- define "host.name" -}}
+{{ .Values.global.serviceName }}-{{ .Values.global.nameOverride }}-{{ .Values.global.namespace }}.{{ .Values.deploy.ingress.Domain }}
+{{- end -}}
+
+{{- define "certificate.path" -}}
+"Certificates/{{ .Values.global.nameOverride }}/*"
+{{- end -}}

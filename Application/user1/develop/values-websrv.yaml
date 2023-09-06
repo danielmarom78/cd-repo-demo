@@ -36,7 +36,7 @@ deploy:
     targetPort: http
     ## More information: https://docs.openshift.com/container-platform/4.6/networking/routes/secured-routes.html
     tls:
-      enabled: true
+      enabled: false
       termination: edge
       insecureEdgeTerminationPolicy: Redirect
       ## IMPORTANT: Do not check 'key' into git!
@@ -44,6 +44,15 @@ deploy:
       caCertificate:
       certificate:
       destinationCACertificate:
+
+  ingress:
+    enabled: true
+    Domain: apps-crc.testing
+    ## More information: https://docs.openshift.com/container-platform/4.6/networking/routes/secured-routes.html
+    tls:
+      enabled: true
+      termination: edge
+      ## IMPORTANT: Do not check 'key' into git!
 
   ## Freeform Liveness Probe. More information: https://docs.openshift.com/container-platform/4.6/applications/application-health.html#application-health-about_application-health
   livenessProbe:
