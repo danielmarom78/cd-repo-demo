@@ -5,7 +5,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "4"
 spec:
-  giteaSsl: true
+  giteaSsl: false
   giteaAdminUser: opentlc-mgr
   giteaAdminPassword: ""
   giteaAdminPasswordLength: 32
