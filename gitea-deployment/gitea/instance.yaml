@@ -5,7 +5,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "4"
 spec:
-  # giteaSsl: false
+  giteaSsl: false
   giteaAdminUser: opentlc-mgr
   giteaAdminPassword: ""
   giteaAdminPasswordLength: 32
@@ -16,7 +16,7 @@ spec:
   giteaUserPassword: openshift
   giteaMigrateRepositories: true
   giteaWebhookAllowedHostList: '*'
-  # giteaWebhookSkipTlsVerify: true
+  giteaWebhookSkipTlsVerify: true
   giteaRepositoriesList:
   - repo: https://github.com/tal-hason/cd-repo-demo.git
     name: cd-repo-demo
