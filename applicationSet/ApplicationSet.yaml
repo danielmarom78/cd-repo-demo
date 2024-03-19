@@ -9,10 +9,9 @@ spec:
       repoURL: https://github.com/danielmarom78/cd-repo-demo.git
       revision: main
       files:
-      - path: "Application/*/*/values-*.yaml"
-        exclude: false
       - path: "Application/*/prod/values-*.yaml" 
-        exclude: true     
+        exclude: true 
+      - path: "Application/*/*/values-*.yaml"   
   template:
     metadata:
       name: '{{global.nameOverride}}-{{global.serviceName}}-{{path[2]}}-{{path[1]}}'
@@ -23,6 +22,7 @@ spec:
         targetRevision: main
         path: '{{path[0]}}'
         helm:
+          env: '{{path[2]}}'
           valueFiles:
           - '{{path[1]}}/{{path[2]}}/{{path.filename}}'
       destination:
