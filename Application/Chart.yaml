@@ -1,7 +1,9 @@
 apiVersion: v2
-description: A Helm chart to build and deploy applications
-keywords:
-- runtimes
-- app
-name: app
-version: 0.0.1
+version: 1.0.0
+name: app1
+description: Example Chart
+
+dependencies:
+  - name: some-example-chart
+    repository: file://../../_example_chart
+    version: '>=0-0'
