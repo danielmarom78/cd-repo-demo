@@ -110,9 +110,9 @@ some-example-chart:
     #  - name: my-extra-container
     #    command: ["sleep", "infinity"]
     #    image: registry.redhat.io/ubi8/ubi-minimal
-  global:
-    ## Override the release name
-    nameOverride: demo
-    serviceName: frontend
-    runTime: nodejs
-    namespace: demo-develop 
+global:
+  ## Override the release name
+  nameOverride: demo
+  serviceName: frontend
+  runTime: nodejs
+  namespace: demo-develop 
