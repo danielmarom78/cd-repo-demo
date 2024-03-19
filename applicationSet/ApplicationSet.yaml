@@ -11,7 +11,7 @@ spec:
       files:
       - path: "Application/*/*/values-*.yaml"
         exclude: false
-      - path: "Application/*/prod" 
+      - path: "Application/*/prod/values-*.yaml" 
         exclude: true     
   template:
     metadata:
