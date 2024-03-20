@@ -4,10 +4,10 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    app.kubernetes.io/instance: demo-backend-prod-app1
+    app.kubernetes.io/instance: prod-backend-app1
     app.kubernetes.io/managed-by: argocd
     app.kubernetes.io/name: demo
     app.kubernetes.io/part-of: demo
     app.openshift.io/runtime: dotnet
-  name: demo-backend-prod-app1
+  name: prod-backend-app1
   namespace: prod

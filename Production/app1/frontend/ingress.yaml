@@ -5,12 +5,12 @@ metadata:
     route.openshift.io/destination-ca-certificate-secret: frontend-ca-cert
     route.openshift.io/termination: edge
   labels:
-    app.kubernetes.io/instance: demo-frontend-prod-app1
+    app.kubernetes.io/instance: prod-frontend-app1
     app.kubernetes.io/managed-by: argocd
     app.kubernetes.io/name: demo
     app.kubernetes.io/part-of: demo
     app.openshift.io/runtime: dotnet
-  name: demo-frontend-prod-app1
+  name: prod-frontend-app1
   namespace: prod
 spec:
   rules:
@@ -19,7 +19,7 @@ spec:
         paths:
           - backend:
               service:
-                name: demo-frontend-prod-app1
+                name: prod-frontend-app1
                 port:
                   number: 8080
             path: /
