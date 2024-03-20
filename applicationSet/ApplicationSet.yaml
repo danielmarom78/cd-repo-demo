@@ -22,7 +22,7 @@ spec:
         path: '{{path[0]}}'
         helm:
           valuesObject:
-            env: '{{path[2]}}'
+            env: '{{path[2]}}-test'
           valueFiles:
           - '{{path[1]}}/{{path[2]}}/{{path.filename}}'
       destination:
