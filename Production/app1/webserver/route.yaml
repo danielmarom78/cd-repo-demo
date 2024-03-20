@@ -2,8 +2,6 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   annotations:
-    kubectl.kubernetes.io/last-applied-configuration: >
-      {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"route.openshift.io/destination-ca-certificate-secret":"backend-ca-cert","route.openshift.io/termination":"edge"},"labels":{"app.kubernetes.io/instance":"demo-backend-prod-app1","app.kubernetes.io/managed-by":"argocd","app.kubernetes.io/name":"demo","app.kubernetes.io/part-of":"demo","app.openshift.io/runtime":"dotnet"},"name":"demo-backend-prod","namespace":"prod"},"spec":{"rules":[{"host":"backend-demo-prod.cluster-2mbd4.dynamic.redhatworkshops.io","http":{"paths":[{"backend":{"service":{"name":"demo-backend","port":{"number":8080}}},"path":"/","pathType":"Prefix"}]}}],"tls":[{}]}}
     route.openshift.io/destination-ca-certificate-secret: backend-ca-cert
     route.openshift.io/termination: edge
   labels:
