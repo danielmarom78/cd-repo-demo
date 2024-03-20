@@ -5,5 +5,5 @@ description: Example Chart
 
 dependencies:
   - name: some-example-chart
-    repository: ghcr.io/danielmarom78
+    repository: oci://ghcr.io/danielmarom78
     version: '>=0-0'
