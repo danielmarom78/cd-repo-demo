@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: demo-cd
+  name: demo-cd-initAndQa
   namespace: openshift-gitops
 spec:
   generators:
@@ -9,7 +9,7 @@ spec:
       repoURL: https://github.com/danielmarom78/cd-repo-demo.git
       revision: main
       files:
-  #    - path: "Application/*/qa/values-*.yaml" 
+      - path: "Application/*/qa/values-*.yaml" 
       - path: "Application/*/init/values-*.yaml"   
   template:
     metadata:
