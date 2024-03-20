@@ -19,7 +19,7 @@ spec:
         paths:
           - backend:
               service:
-                name: demo-webserver
+                name: demo-webserver-prod-app1
                 port:
                   number: 8080
             path: /
