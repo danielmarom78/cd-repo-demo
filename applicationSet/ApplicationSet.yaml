@@ -23,7 +23,7 @@ spec:
         helm:
           parameters:
             - name: "env"
-              value: '{{path[2]}}'
+              value: '{{path[2]}}-test'
           valueFiles:
           - '{{path[1]}}/{{path[2]}}/{{path.filename}}'
       destination:
