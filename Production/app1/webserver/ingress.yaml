@@ -14,7 +14,7 @@ metadata:
   namespace: prod
 spec:
   rules:
-    - host: webserver-demo-prod.cluster-2mbd4.dynamic.redhatworkshops.io
+    - host: app1-webserver-demo-prod.cluster-2mbd4.dynamic.redhatworkshops.io
       http:
         paths:
           - webserver:

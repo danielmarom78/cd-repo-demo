@@ -14,7 +14,7 @@ metadata:
   namespace: prod
 spec:
   rules:
-    - host: frontend-demo-prod.cluster-2mbd4.dynamic.redhatworkshops.io
+    - host: app1-frontend-demo-prod.cluster-2mbd4.dynamic.redhatworkshops.io
       http:
         paths:
           - frontend:
