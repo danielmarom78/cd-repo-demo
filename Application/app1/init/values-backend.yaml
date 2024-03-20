@@ -114,5 +114,3 @@ global:
   nameOverride: demo
   serviceName: backend
   runTime: dotnet
-
-env: prod
