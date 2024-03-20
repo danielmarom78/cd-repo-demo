@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: '{{ include "app.name" . }}-{{ .Values.global.serviceName }}-{{ .Values.global.namespace }}'
+  name: '{{ .Values.global.namespace }}-{{ .Values.global.serviceName }}-{{ include "app.name" . }}'
   labels:
     {{- include "app.labels" . | nindent 4 }}
   annotations:
@@ -17,7 +17,7 @@ spec:
       paths:
       - backend:
           service:
-            name: '{{ include "app.name" . }}-{{ .Values.global.serviceName }}'
+            name: '{{ .Values.global.namespace }}-{{ .Values.global.serviceName }}-{{ include "app.name" . }}'
             port:
             {{- range .Values.deploy.ports }}
               number: {{ .port }}

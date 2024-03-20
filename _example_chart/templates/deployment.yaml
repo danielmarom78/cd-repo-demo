@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: '{{ include "app.name" . }}-{{ .Values.global.serviceName }}'
+  name: '{{ .Values.global.namespace }}-{{ .Values.global.serviceName }}-{{ include "app.name" . }}'
   labels:
     {{- include "app.labels" . | nindent 4 }}
 spec:
