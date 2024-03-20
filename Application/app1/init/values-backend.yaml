@@ -115,3 +115,5 @@ global:
   serviceName: backend
   namespace: demo-develop 
   runTime: dotnet
+
+env: prod
