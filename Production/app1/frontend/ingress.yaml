@@ -17,7 +17,7 @@ spec:
     - host: app1-frontend-demo-prod.cluster-2mbd4.dynamic.redhatworkshops.io
       http:
         paths:
-          - frontend:
+          - backend:
               service:
                 name: demo-frontend
                 port:

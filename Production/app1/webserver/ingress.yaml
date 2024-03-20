@@ -17,7 +17,7 @@ spec:
     - host: app1-webserver-demo-prod.cluster-2mbd4.dynamic.redhatworkshops.io
       http:
         paths:
-          - webserver:
+          - backend:
               service:
                 name: demo-webserver
                 port:
