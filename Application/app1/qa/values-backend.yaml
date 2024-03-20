@@ -111,7 +111,5 @@ some-example-chart:
     #    command: ["sleep", "infinity"]
     #    image: registry.redhat.io/ubi8/ubi-minimal
 global:
-  ## Override the release name
-  nameOverride: demo
   serviceName: backend
   runTime: nodejs
