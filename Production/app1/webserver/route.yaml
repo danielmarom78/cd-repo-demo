@@ -6,7 +6,6 @@ metadata:
       {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"route.openshift.io/destination-ca-certificate-secret":"backend-ca-cert","route.openshift.io/termination":"edge"},"labels":{"app.kubernetes.io/instance":"demo-backend-prod-app1","app.kubernetes.io/managed-by":"argocd","app.kubernetes.io/name":"demo","app.kubernetes.io/part-of":"demo","app.openshift.io/runtime":"dotnet"},"name":"demo-backend-prod","namespace":"prod"},"spec":{"rules":[{"host":"backend-demo-prod.cluster-2mbd4.dynamic.redhatworkshops.io","http":{"paths":[{"backend":{"service":{"name":"demo-backend","port":{"number":8080}}},"path":"/","pathType":"Prefix"}]}}],"tls":[{}]}}
     route.openshift.io/destination-ca-certificate-secret: backend-ca-cert
     route.openshift.io/termination: edge
-  creationTimestamp: '2024-03-20T15:06:24Z'
   labels:
     app.kubernetes.io/instance: demo-backend-prod-app1
     app.kubernetes.io/managed-by: argocd
@@ -15,14 +14,6 @@ metadata:
     app.openshift.io/runtime: dotnet
   name: demo-backend-prod-cvsdt
   namespace: prod
-  ownerReferences:
-    - apiVersion: networking.k8s.io/v1
-      controller: true
-      kind: Ingress
-      name: demo-backend-prod
-      uid: fd3e38d9-5c8c-40f0-a343-915f580dbf23
-  resourceVersion: '26518308'
-  uid: 24b0a5ee-e071-4e3b-ac88-77bc211d5cc0
 spec:
   host: backend-demo-prod.cluster-2mbd4.dynamic.redhatworkshops.io
   path: /
@@ -36,13 +27,3 @@ spec:
     name: demo-backend
     weight: 100
   wildcardPolicy: None
-status:
-  ingress:
-    - conditions:
-        - lastTransitionTime: '2024-03-20T15:06:24Z'
-          status: 'True'
-          type: Admitted
-      host: backend-demo-prod.cluster-2mbd4.dynamic.redhatworkshops.io
-      routerCanonicalHostname: router-default.apps.cluster-2mbd4.dynamic.redhatworkshops.io
-      routerName: default
-      wildcardPolicy: None
