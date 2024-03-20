@@ -4,10 +4,10 @@ data:
 kind: ConfigMap
 metadata:
   labels:
-    app.kubernetes.io/instance: prod-webserver-app1
+    app.kubernetes.io/instance: prod-webserver-app2
     app.kubernetes.io/managed-by: argocd
     app.kubernetes.io/name: demo
     app.kubernetes.io/part-of: demo
     app.openshift.io/runtime: dotnet
-  name: prod-webserver-app1
+  name: prod-webserver-app2
   namespace: prod

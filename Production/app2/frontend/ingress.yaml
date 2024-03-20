@@ -5,21 +5,21 @@ metadata:
     route.openshift.io/destination-ca-certificate-secret: frontend-ca-cert
     route.openshift.io/termination: edge
   labels:
-    app.kubernetes.io/instance: prod-frontend-app1
+    app.kubernetes.io/instance: prod-frontend-app2
     app.kubernetes.io/managed-by: argocd
     app.kubernetes.io/name: demo
     app.kubernetes.io/part-of: demo
     app.openshift.io/runtime: dotnet
-  name: prod-frontend-app1
+  name: prod-frontend-app2
   namespace: prod
 spec:
   rules:
-    - host: app1-frontend-demo-prod.cluster-2mbd4.dynamic.redhatworkshops.io
+    - host: app2-frontend-demo-prod.cluster-2mbd4.dynamic.redhatworkshops.io
       http:
         paths:
           - backend:
               service:
-                name: prod-frontend-app1
+                name: prod-frontend-app2
                 port:
                   number: 8080
             path: /
