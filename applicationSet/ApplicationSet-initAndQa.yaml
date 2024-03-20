@@ -13,7 +13,7 @@ spec:
       - path: "Application/*/init/values-*.yaml"   
   template:
     metadata:
-      name: '{{global.nameOverride}}-{{global.serviceName}}-{{path[2]}}-{{path[1]}}'
+      name: '{{path[1]}}-{{path[2]}}-{{global.serviceName}}'
     spec:
       project: default
       source:
