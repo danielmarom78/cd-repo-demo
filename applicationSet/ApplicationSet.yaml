@@ -21,9 +21,9 @@ spec:
         targetRevision: main
         path: '{{path[0]}}'
         helm:
-          # parameters:
-          # - name: env
-          #   value: '{{path[2]}}-test'
+          parameters:
+           - name: global.namespace
+             value: '{{path[2]}}-test'
           valueFiles:
           - '{{path[1]}}/{{path[2]}}/{{path.filename}}'
       destination:
