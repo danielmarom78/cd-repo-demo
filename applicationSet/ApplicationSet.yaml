@@ -10,7 +10,7 @@ spec:
       revision: main
       files:
       - path: "Application/*/qa/values-*.yaml" 
-      - path: "Application/*/init/values-*.yaml"   
+      # - path: "Application/*/init/values-*.yaml"   
   template:
     metadata:
       name: '{{global.nameOverride}}-{{global.serviceName}}-{{path[2]}}-{{path[1]}}'
