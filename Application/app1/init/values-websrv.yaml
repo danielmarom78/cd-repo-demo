@@ -48,7 +48,7 @@ some-example-chart:
 
     ingress:
       enabled: true
-      Domain: apps-crc.testing
+      Domain: cluster-2mbd4.dynamic.redhatworkshops.io
       ## More information: https://docs.openshift.com/container-platform/4.6/networking/routes/secured-routes.html
       tls:
         enabled: true
