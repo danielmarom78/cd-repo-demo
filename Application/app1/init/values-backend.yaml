@@ -113,7 +113,6 @@ global:
   ## Override the release name
   nameOverride: demo
   serviceName: backend
-  namespace: demo-develop 
   runTime: dotnet
 
 env: prod

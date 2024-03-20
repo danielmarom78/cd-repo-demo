@@ -122,4 +122,3 @@ global:
   nameOverride: demo
   serviceName: websrv
   runTime: nginx
-  namespace: demo-develop 

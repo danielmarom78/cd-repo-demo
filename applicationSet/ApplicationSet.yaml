@@ -23,7 +23,7 @@ spec:
         helm:
           parameters:
            - name: global.namespace
-             value: '{{path[2]}}-test'
+             value: '{{path[2]}}'
           valueFiles:
           - '{{path[1]}}/{{path[2]}}/{{path.filename}}'
       destination:
