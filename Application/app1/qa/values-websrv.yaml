@@ -57,7 +57,6 @@ some-example-chart:
         path: /health/liveliness
         port: http
     ## If you don't want a livenessProbe, override like this in your values file
-    # livenessProbe: ''
 
     ## Freeform Readiness Probe. More information: https://docs.openshift.com/container-platform/4.6/applications/application-health.html#application-health-about_application-health
     readinessProbe:
