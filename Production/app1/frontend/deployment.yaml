@@ -51,5 +51,3 @@ spec:
             httpGet:
               path: /health/readiness
               port: http
-          volumeMounts: null
-      volumes: null
