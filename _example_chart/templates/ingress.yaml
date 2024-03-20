@@ -17,7 +17,7 @@ spec:
       paths:
       - backend:
           service:
-            name: '{{ include "app.name" . }}-{{ .Values.global.serviceName }}-{{ .Values.env}}'
+            name: '{{ include "app.name" . }}-{{ .Values.global.serviceName }}-{{ .Values.env }}'
             port:
             {{- range .Values.deploy.ports }}
               number: {{ .port }}
