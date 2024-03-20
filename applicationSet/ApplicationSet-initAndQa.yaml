@@ -24,6 +24,8 @@ spec:
           parameters:
            - name: global.namespace
              value: '{{path[2]}}'
+           - name: global.nameOverride
+             value: '{{path[1]}}'
           valueFiles:
           - '{{path[1]}}/{{path[2]}}/{{path.filename}}'
       destination:
