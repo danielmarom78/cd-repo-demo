@@ -7,17 +7,17 @@ spec:
   generators:
   - git:
       repoURL: https://github.com/danielmarom78/cd-repo-demo.git
-      revision: main
+      revision: Production
       directories:
-      - path: "Production/*/*"   
+      - path: "*/*"   
   template:
     metadata:
-      name: 'prod-{{path[2]}}-{{path[1]}}'
+      name: 'prod-{{path[1]}}-{{path[0]}}'
     spec:
       project: default
       source:
         repoURL: https://github.com/danielmarom78/cd-repo-demo.git
-        targetRevision: main
+        targetRevision: Production
         path: '{{path}}'
       destination:
         server: 'https://kubernetes.default.svc'
