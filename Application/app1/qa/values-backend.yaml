@@ -113,5 +113,5 @@ some-example-chart:
 global:
   ## Override the release name
   nameOverride: demo
-  serviceName: backend
+  serviceName: backend2
   runTime: nodejs
