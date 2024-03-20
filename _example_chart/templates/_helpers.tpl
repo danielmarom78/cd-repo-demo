@@ -22,7 +22,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
 
 {{- define "host.name" -}}
-{{ .Values.global.serviceName }}-{{ .Values.global.nameOverride }}-{{ .Values.global.namespace }}.{{ .Values.deploy.ingress.Domain }}
+{{ .Values.global.serviceName }}-{{ .Values.global.nameOverride }}-{{ .Values.env }}.{{ .Values.deploy.ingress.Domain }}
 {{- end -}}
 
 {{- define "certificate.path" -}}
