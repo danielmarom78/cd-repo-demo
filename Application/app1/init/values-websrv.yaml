@@ -81,7 +81,7 @@ some-example-chart:
     ## Application properties file for configuring the app
     applicationProperties:
       ## Determines if application properties should be created in a configmap and mounted to the application container
-      enabled: false
+      enabled: true
       ## Location to mount the properties file
       mountPath: /deployments/config/
       ## Application properties file contents
