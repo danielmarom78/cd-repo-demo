@@ -2,24 +2,24 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    route.openshift.io/destination-ca-certificate-secret: webserver-ca-cert
+    route.openshift.io/destination-ca-certificate-secret: frontend-ca-cert
     route.openshift.io/termination: edge
   labels:
-    app.kubernetes.io/instance: demo-webserver-prod-app1
+    app.kubernetes.io/instance: demo-frontend-prod-app1
     app.kubernetes.io/managed-by: argocd
     app.kubernetes.io/name: demo
     app.kubernetes.io/part-of: demo
     app.openshift.io/runtime: dotnet
-  name: demo-webserver-prod
+  name: demo-frontend-prod
   namespace: prod
 spec:
   rules:
-    - host: webserver-demo-prod.cluster-2mbd4.dynamic.redhatworkshops.io
+    - host: frontend-demo-prod.cluster-2mbd4.dynamic.redhatworkshops.io
       http:
         paths:
-          - webserver:
+          - frontend:
               service:
-                name: demo-webserver
+                name: demo-frontend
                 port:
                   number: 8080
             path: /
