@@ -1,9 +1,0 @@
-apiVersion: v2
-version: 1.0.0
-name: app1
-description: Example Chart
-
-dependencies:
-  - name: some-example-chart
-    repository: file://../_example_chart
-    version: '>=0-0'
