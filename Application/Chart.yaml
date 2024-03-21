@@ -7,3 +7,4 @@ dependencies:
   - name: some-example-chart
     repository: oci://ghcr.io/danielmarom78
     version: '>=0-0'
+    alias: application

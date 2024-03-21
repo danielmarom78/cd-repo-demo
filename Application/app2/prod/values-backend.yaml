@@ -1,4 +1,7 @@
-some-example-chart:
+global:
+  serviceName: backend
+  runTime: dotnet
+application:
   image:
     ## Name of the image you want to build/deploy
     ## Defaults to the release name
@@ -109,8 +112,4 @@ some-example-chart:
     #  - name: my-extra-container
     #    command: ["sleep", "infinity"]
     #    image: registry.redhat.io/ubi8/ubi-minimal
-global:
-  ## Override the release name
-  nameOverride: demo
-  serviceName: backend
-  runTime: dotnet
+
