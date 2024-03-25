@@ -11,11 +11,11 @@ spec:
       directories:
       - path: "*/*" #example: app1/frontend  
       values:
-      - applicationName: '{{path[0]}}'
-      - serviceName: '{{path[1]}}'
+        applicationName: '{{path[0]}}'
+        serviceName: '{{path[1]}}'
   template:
     metadata:
-      name: 'prod-{{serviceName}}-{{applicationName}}'
+      name: 'prod-{{values.serviceName}}-{{values.applicationName}}'
     spec:
       project: default
       source:

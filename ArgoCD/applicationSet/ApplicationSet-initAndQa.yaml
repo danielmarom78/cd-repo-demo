@@ -12,12 +12,12 @@ spec:
       - path: "Application/*/qa/values-*.yaml" #example: Application/app1/values-frontend  
       - path: "Application/*/int/values-*.yaml"   
       values:
-      - applicationName: '{{path[1]}}'
-      - environment: '{{path[2]}}'
+        applicationName: '{{path[1]}}'
+        environment: '{{path[2]}}'
 
   template:
     metadata:
-      name: '{{environment}}-{{global.serviceName}}-{{applicationName}}'
+      name: '{{values.environment}}-{{global.serviceName}}-{{values.applicationName}}'
     spec:
       project: default
       source:
@@ -27,9 +27,9 @@ spec:
         helm:
           parameters:
            - name: global.namespace
-             value: '{{environment}}'
+             value: '{{values.environment}}'
            - name: global.nameOverride
-             value: '{{applicationName}}'
+             value: '{{values.applicationName}}'
           valueFiles:
           - '{{path[1]}}/{{path[2]}}/{{path.filename}}'
       destination:
