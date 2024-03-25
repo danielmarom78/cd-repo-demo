@@ -9,10 +9,13 @@ spec:
       repoURL: https://github.com/danielmarom78/cd-repo-demo.git
       revision: Production
       directories:
-      - path: "*/*"   
+      - path: "*/*" #example: app1/frontend  
+      values:
+      - applicationName: '{{path[0]}}'
+      - serviceName: '{{path[1]}}'
   template:
     metadata:
-      name: 'prod-{{path[1]}}-{{path[0]}}'
+      name: 'prod-{{serviceName}}-{{applicationName}}'
     spec:
       project: default
       source:

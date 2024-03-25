@@ -9,11 +9,15 @@ spec:
       repoURL: https://github.com/danielmarom78/cd-repo-demo.git
       revision: main
       files:
-      - path: "Application/*/qa/values-*.yaml" 
-      - path: "Application/*/init/values-*.yaml"   
+      - path: "Application/*/qa/values-*.yaml" #example: Application/app1/values-frontend  
+      - path: "Application/*/int/values-*.yaml"   
+      values:
+      - applicationName: '{{path[1]}}'
+      - environment: '{{path[2]}}'
+
   template:
     metadata:
-      name: '{{path[2]}}-{{global.serviceName}}-{{path[1]}}'
+      name: '{{environment}}-{{global.serviceName}}-{{applicationName}}'
     spec:
       project: default
       source:
@@ -23,9 +27,9 @@ spec:
         helm:
           parameters:
            - name: global.namespace
-             value: '{{path[2]}}'
+             value: '{{environment}}'
            - name: global.nameOverride
-             value: '{{path[1]}}'
+             value: '{{applicationName}}'
           valueFiles:
           - '{{path[1]}}/{{path[2]}}/{{path.filename}}'
       destination:
