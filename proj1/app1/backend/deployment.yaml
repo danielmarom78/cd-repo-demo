@@ -3,13 +3,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: 'prod--proj1-app1'
+  name: 'prod-backend-proj1-app1'
   labels:
     app.kubernetes.io/name: proj1-app1
     app.kubernetes.io/instance: release-name
     app.kubernetes.io/part-of: proj1-app1
     app.kubernetes.io/managed-by: argocd
-    app.openshift.io/runtime: nodejs
+    app.openshift.io/runtime: dotnet
 spec:
   replicas: 1
   selector:
@@ -23,10 +23,10 @@ spec:
         app.kubernetes.io/instance: release-name
         app.kubernetes.io/part-of: proj1-app1
         app.kubernetes.io/managed-by: argocd
-        app.openshift.io/runtime: nodejs
+        app.openshift.io/runtime: dotnet
     spec:
       containers:
-        - name: 
+        - name: backend
           image: quay.io/thason/gitops-demo:e28dc8ebfb4934cf1362f87285ebb7c2f1faf4cf
           ports:
             - name: http
@@ -51,4 +51,4 @@ spec:
       volumes:
         - name: application-properties
           configMap:
-            name: 'prod--proj1-app1'
+            name: 'prod-backend-proj1-app1'

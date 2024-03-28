@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: 'prod--proj1-app1'
+  name: 'prod-frontend-proj1-app1'
   labels:
     app.kubernetes.io/name: proj1-app1
     app.kubernetes.io/instance: release-name

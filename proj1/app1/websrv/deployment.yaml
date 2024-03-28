@@ -1,0 +1,54 @@
+---
+# Source: proxy-chart/charts/application/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 'prod-websrv-proj1-app1'
+  labels:
+    app.kubernetes.io/name: proj1-app1
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/part-of: proj1-app1
+    app.kubernetes.io/managed-by: argocd
+    app.openshift.io/runtime: nodejs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: proj1-app1
+      app.kubernetes.io/instance: release-name
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: proj1-app1
+        app.kubernetes.io/instance: release-name
+        app.kubernetes.io/part-of: proj1-app1
+        app.kubernetes.io/managed-by: argocd
+        app.openshift.io/runtime: nodejs
+    spec:
+      containers:
+        - name: websrv
+          image: quay.io/thason/gitops-demo:e28dc8ebfb4934cf1362f87285ebb7c2f1faf4cf
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /health/liveliness
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /health/readiness
+              port: http
+          env:
+            - name: IMAGE
+              value: quay.io/thason/gitops-demo
+            - name: TAG
+              value: e28dc8ebfb4934cf1362f87285ebb7c2f1faf4cf
+          volumeMounts:
+            - name: application-properties
+              mountPath: /deployments/config/
+      volumes:
+        - name: application-properties
+          configMap:
+            name: 'prod-websrv-proj1-app1'
