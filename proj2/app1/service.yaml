@@ -1,0 +1,22 @@
+---
+# Source: proxy-chart/charts/application/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: 'prod-websrv-proj2-app1'
+  labels:
+    app.kubernetes.io/name: proj2-app1
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/part-of: proj2-app1
+    app.kubernetes.io/managed-by: argocd
+    app.openshift.io/runtime: nodejs
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: proj2-app1
+    app.kubernetes.io/instance: release-name
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
