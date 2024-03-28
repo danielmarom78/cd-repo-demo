@@ -3,13 +3,13 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: '-backend-release-name'
+  name: 'prod--proj1-app1'
   labels:
-    app.kubernetes.io/name: release-name
+    app.kubernetes.io/name: proj1-app1
     app.kubernetes.io/instance: release-name
-    app.kubernetes.io/part-of: release-name
+    app.kubernetes.io/part-of: proj1-app1
     app.kubernetes.io/managed-by: argocd
-    app.openshift.io/runtime: dotnet
+    app.openshift.io/runtime: nodejs
 data:
   'application.properties': |-
     ## Properties go here
