@@ -1,0 +1,29 @@
+---
+# Source: proxy-chart/charts/application/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: '-websrv-release-name'
+  labels:
+    app.kubernetes.io/name: release-name
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/part-of: release-name
+    app.kubernetes.io/managed-by: argocd
+    app.openshift.io/runtime: nodejs
+  annotations:
+    route.openshift.io/termination: edge 
+    route.openshift.io/destination-ca-certificate-secret: websrv-ca-cert
+spec:
+  rules:
+  - host: websrv--.cluster-2mbd4.dynamic.redhatworkshops.io
+    http:
+      paths:
+      - backend:
+          service:
+            name: '-websrv-release-name'
+            port:
+              number: 8080
+        path: /
+        pathType: Prefix
+  tls:
+  - {}

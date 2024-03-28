@@ -1,0 +1,15 @@
+---
+# Source: proxy-chart/charts/application/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: '-websrv-release-name'
+  labels:
+    app.kubernetes.io/name: release-name
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/part-of: release-name
+    app.kubernetes.io/managed-by: argocd
+    app.openshift.io/runtime: nodejs
+data:
+  'application.properties': |-
+    ## Properties go here
