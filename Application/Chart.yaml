@@ -5,7 +5,7 @@ description: A proxy-chart to the global-chart
 
 dependencies:
   - name: global-chart
-    repository: https://github.com/danielmarom78/cd-repo-demo.git
+    repository: oci://ghcr.io/danielmarom78
     version: '>=0-0'
     alias: application
 
