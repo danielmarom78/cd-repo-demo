@@ -9,10 +9,10 @@ spec:
       repoURL: https://github.com/danielmarom78/cd-repo-demo.git
       revision: Production
       directories:
-      - path: "*/*" #example: app1/frontend  
+      - path: "*/*/*" #example: proj1/app1/frontend  
       values:
-        applicationName: '{{path[0]}}'
-        serviceName: '{{path[1]}}'
+        applicationName: '{{path[1]}}-{{path[0]}}'
+        serviceName: '{{path[2]}}'
   template:
     metadata:
       name: 'prod-{{values.serviceName}}-{{values.applicationName}}'

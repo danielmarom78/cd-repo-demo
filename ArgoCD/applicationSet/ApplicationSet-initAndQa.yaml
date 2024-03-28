@@ -9,11 +9,11 @@ spec:
       repoURL: https://github.com/danielmarom78/cd-repo-demo.git
       revision: main
       files:
-      - path: "Application/*/qa/values-*.yaml" #example: Application/app1/values-frontend  
+      - path: "Application/*/qa/values-*.yaml" #example: Application/proj1/app1/values-frontend  
       - path: "Application/*/int/values-*.yaml"   
       values:
-        applicationName: '{{path[1]}}'
-        environment: '{{path[2]}}'
+        applicationName: '{{path[1]}}-{{path[2]}}'
+        environment: '{{path[3]}}'
 
   template:
     metadata:
@@ -31,7 +31,7 @@ spec:
            - name: global.nameOverride
              value: '{{values.applicationName}}'
           valueFiles:
-          - '{{path[1]}}/{{path[2]}}/{{path.filename}}'
+          - '{{path[1]}}/{{path[2]}}/{{path[3]}}/{{path.filename}}'
       destination:
         server: 'https://kubernetes.default.svc'
         namespace: '{{values.environment}}'
