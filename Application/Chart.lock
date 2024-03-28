@@ -1,0 +1,6 @@
+dependencies:
+- name: global-chart
+  repository: oci://ghcr.io/danielmarom78
+  version: 1.0.0
+digest: sha256:3e889f4db3fc1e682732cbd5586b0381c2cb626ad3c5eb4f7e3ceec8eaf94a42
+generated: "2024-03-28T23:02:09.827842695+02:00"
