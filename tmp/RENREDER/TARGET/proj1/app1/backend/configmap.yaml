@@ -1,0 +1,15 @@
+---
+# Source: proxy-chart/charts/application/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: 'prod-backend-proj1-app1'
+  labels:
+    app.kubernetes.io/name: proj1-app1
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/part-of: proj1-app1
+    app.kubernetes.io/managed-by: argocd
+    app.openshift.io/runtime: dotnet
+data:
+  'application.properties': |-
+    ## Properties go here

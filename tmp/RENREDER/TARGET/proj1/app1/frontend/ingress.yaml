@@ -1,0 +1,29 @@
+---
+# Source: proxy-chart/charts/application/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: 'prod-frontend-proj1-app1'
+  labels:
+    app.kubernetes.io/name: proj1-app1
+    app.kubernetes.io/instance: release-name
+    app.kubernetes.io/part-of: proj1-app1
+    app.kubernetes.io/managed-by: argocd
+    app.openshift.io/runtime: nodejs
+  annotations:
+    route.openshift.io/termination: edge 
+    route.openshift.io/destination-ca-certificate-secret: frontend-ca-cert
+spec:
+  rules:
+  - host: frontend-proj1-app1-prod.cluster-2mbd4.dynamic.redhatworkshops.io
+    http:
+      paths:
+      - backend:
+          service:
+            name: 'prod-frontend-proj1-app1'
+            port:
+              number: 8080
+        path: /
+        pathType: Prefix
+  tls:
+  - {}
