@@ -3,13 +3,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: '-backend-release-name'
+  name: '-websrv-release-name'
   labels:
     app.kubernetes.io/name: release-name
     app.kubernetes.io/instance: release-name
     app.kubernetes.io/part-of: release-name
     app.kubernetes.io/managed-by: argocd
-    app.openshift.io/runtime: dotnet
+    app.openshift.io/runtime: nodejs
 spec:
   replicas: 1
   selector:
@@ -23,10 +23,10 @@ spec:
         app.kubernetes.io/instance: release-name
         app.kubernetes.io/part-of: release-name
         app.kubernetes.io/managed-by: argocd
-        app.openshift.io/runtime: dotnet
+        app.openshift.io/runtime: nodejs
     spec:
       containers:
-        - name: backend
+        - name: websrv
           image: quay.io/thason/gitops-demo:e28dc8ebfb4934cf1362f87285ebb7c2f1faf4cf
           ports:
             - name: http
@@ -51,4 +51,4 @@ spec:
       volumes:
         - name: application-properties
           configMap:
-            name: '-backend-release-name'
+            name: '-websrv-release-name'
