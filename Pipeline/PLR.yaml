@@ -7,7 +7,7 @@ spec:
     - name: APP_NAME
       value: demo
     - name: GIT_REPO
-      value: 'https://github.com/tal-hason/nodejs-demo-app.git'
+      value: 'https://github.com/danielmarom78/nodejs-demo-app.git'
     - name: GIT_REVISION
       value: main
     - name: IMAGE_NAME
@@ -17,7 +17,7 @@ spec:
     - name: IMAGE_TAG
       value: node_v2
     - name: GIT_CD_REPO
-      value: 'https://github.com/tal-hason/cd-repo-demo.git'
+      value: 'https://github.com/danielmarom78/cd-repo-demo.git'
     - name: BUILD
       value: 'True'
     - name: DEPLOY_ENV

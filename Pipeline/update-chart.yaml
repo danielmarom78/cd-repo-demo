@@ -8,7 +8,7 @@ spec:
       description: where your repo is hosted exam (like "github.com" )
       name: git-url-source
       type: string
-    - default: tal-hason
+    - default: danielmarom78
       description: Your GIT User name
       name: git-user
       type: string
