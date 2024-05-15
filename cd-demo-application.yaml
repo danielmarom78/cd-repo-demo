@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cd-demo
+spec:
+  destination:
+    name: ''
+    namespace: openshift-gitops
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: ARGOCD/ApplicationsSet
+    repoURL: 'https://github.com/danielmarom78/cd-repo-demo.git'
+    targetRevision: HEAD
+  sources: []
+  project: default
