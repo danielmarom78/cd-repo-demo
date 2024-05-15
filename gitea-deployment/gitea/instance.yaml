@@ -18,7 +18,7 @@ spec:
   giteaWebhookAllowedHostList: '*'
   giteaWebhookSkipTlsVerify: true
   giteaRepositoriesList:
-  - repo: https://github.com/danielmarom78/cd-repo-demo.git
+  - repo: https://github.com/tal-hason/cd-repo-demo.git
     name: cd-repo-demo
     private: false
   - repo: https://github.com/tal-hason/nodejs-demo-app.git

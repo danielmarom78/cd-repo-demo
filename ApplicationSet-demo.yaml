@@ -6,7 +6,7 @@ metadata:
 spec:
   generators:
   - git:
-      repoURL: https://github.com/danielmarom78/cd-repo-demo.git
+      repoURL: https://github.com/tal-hason/cd-repo-demo.git
       revision: main
       files:
       - path: "Application/*/develop/values-*.yaml"
@@ -16,7 +16,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/danielmarom78/cd-repo-demo.git
+        repoURL: https://github.com/tal-hason/cd-repo-demo.git
         targetRevision: main
         path: '{{path[0]}}'
         helm:
