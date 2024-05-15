@@ -17,7 +17,7 @@ spec:
     - name: IMAGE_TAG
       value: node_v2
     - name: GIT_CD_REPO
-      value: 'https://github.com/tal-hason/cd-repo-demo.git'
+      value: 'https://github.com/danielmarom78/cd-repo-demo.git'
     - name: BUILD
       value: 'True'
     - name: DEPLOY_ENV
